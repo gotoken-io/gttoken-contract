@@ -1,11 +1,3 @@
-/*1. Pausable
-* 2. upgradable
-* 3. forkable
-* 4. blacklist
-* 5. set issuers
-* 6. sale token, distribute token
-*/
-
 pragma solidity >=0.4.21 <0.6.0;
 
 import "./ERC20Impl.sol";

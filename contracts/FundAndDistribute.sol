@@ -143,11 +143,6 @@ contract FundAndDistributeBase is FDInterface, MultiSig, TokenClaimer, SafeMath,
       uint old_balance = token.balanceOf(msg.sender);
       require(old_balance >= _amount, "not enough amout");
 
-      //bool ret = token.transferFrom(msg.sender, address(this), _amount);
-      //require(ret, "FundAndDistributeBase:_exchange, transferFrom return false");
-      //uint new_balance = token.balanceOf(address(this));
-      //require(new_balance == old_balance + _amount, "FundAndDistributeBase:_exchange, invalid transfer");
-
       uint k_gts = safeDiv(_amount, 1000);
       uint cost = safeMul(k_gts, 1000);
       uint r = safeSub(_amount, cost);
