@@ -1,0 +1,157 @@
+\documentclass[12pt]{article}
+\usepackage{xeCJK}
+\input{../common/common.tex}
+\usepackage{indentfirst}
+
+
+\setCJKmainfont[BoldFont = STSongti-SC-Bold]{STSongti-SC-Regular}
+\setCJKfamilyfont{hei}{SIL-Hei-Med-Jian}		%宋体
+\setCJKfamilyfont{song}{SimSun}		%宋体
+\setCJKfamilyfont{kai}{Kaiti}		%楷体
+\setCJKfamilyfont{fang}{song}	%仿宋
+\setCJKfamilyfont{li}{song}			%隶书
+\setCJKfamilyfont{you}{Yuanti}		%幼圆
+
+\newcommand{\song}{\CJKfamily{song}}	%宋体
+\newcommand{\hei}{\CJKfamily{hei}}	%黑体
+\newcommand{\kai}{\CJKfamily{kai}}	%楷体
+\newcommand{\fs}{\CJKfamily{fang}}	%仿宋
+\newcommand{\li}{\CJKfamily{li}}		%隶书
+\newcommand{\you}{\CJKfamily{you}}	%幼圆
+\newcommand{\reffig}[1]{图\ref{#1}}
+\newcommand{\refsec}[1]{\S~\ref{#1}}
+
+\newcommand{\txhash}[1]{{\href{https://etherscan.io/tx/#1}{\texttt{#1}}}}
+\newcommand{\ethaddr}[1]{{\href{https://etherscan.io/address/#1}{\texttt{#1}}}}
+
+\onehalfspacing   % ----------设置1.5倍行距（可能有意义，待调整）
+
+%\parindent=20pt  % -------------------首行缩进大小，英文分段就直接0pt了吧。
+\setlength{\parindent}{2.1em}
+\setlength{\parskip}{0.3\baselineskip}
+\newcommand{\nrcore}{Core Nebulas Rank}
+\newcommand{\nrext}{Extended Nebulas Ranks}
+\newcommand{\dom}{{\; \texttt{dom}\;}}
+\newcommand{\nr}{\Gamma}
+
+\setCJKsansfont[BoldFont = STHeitiSC-Medium]{STHeitiSC-Light}
+
+
+\newtheorem{property}{特征}
+\newtheorem{corollary}{推论}
+%\addbibresource{reference.bib}
+
+\begin{document}
+\pagestyle{empty}
+\renewcommand{\contentsname}{目录}
+\renewcommand{\abstractname}{摘要}
+\renewcommand{\refname}{参考文献}
+%\renewcommand{\nomname}{术语表（按首字母排序）}
+\renewcommand{\figurename}{图}
+\renewcommand{\tablename}{表}
+\renewcommand{\baselinestretch}{1.5}
+\renewcommand{\appendixname}{附录}
+\renewcommand{\proofname}{证明}
+
+\pagecolor{\pcolor}
+
+\begin{titlepage}
+  \begin{center}
+    \vspace*{5.5cm}
+    %\includegraphics[scale=0.5]{../common/logo.png}
+
+    \vspace{0.5cm}
+
+
+   \textbf{\huge{GoToken合约及操作记录}}
+
+    \vspace{0.5cm}
+    
+    \textbf{}
+  \end{center}
+
+\end{titlepage}
+\setcounter{page}{0}
+%\thispagestyle{empty}
+\tableofcontents
+\newpage
+\setcounter{page}{1}
+\pagestyle{fancy}
+\vspace*{0.01cm}
+
+\section{介绍}
+本文记录了GoToken合约情况，以及多签操作记录。个人的操作行为不在本文记录的范围内。
+
+\section{工厂合约及地址}
+\begin{enumerate}
+
+\item \ethaddr{0x38c931c4064459468d4F6ED0Ae16F4Ba433Aa03F}，多签工厂合约，用于生成多签合约。
+\item \ethaddr{0x98D5EC13d08E5796De7191c1719D6D5bDec4a74c}，可信列表工厂合约，用于生成一个可信的列表。
+\item \ethaddr{0x5004e5C6b2D2009eB273bBaB45E5a756e2f729E5}，ERC20代币工厂合约，用于生成一个ERC20代币。
+\item \ethaddr{0xfcD4bfFd7B76092c59Fb9791ff3F9B5405D4010A}，投资及分发工厂合约，业务相关。
+\item \ethaddr{0x5b0D747aF4AF70d8022b1Cbe4Fa27010B3C3AD6d}，初始锁仓工厂合约，用于生成一个锁仓ERC20的合约。
+\end{enumerate}
+
+\section{实例合约及地址}
+
+GoToken的合约由三个合约组成，分别为
+\begin{enumerate}
+\item \ethaddr{0x9FDB24Df185b4e6c42846c2f1355cA0A2BB7e043}，多签合约，用于管理GTToken合约的信任合约列表；构造参数为
+\begin{verbatim}
+(['0xe855B4cb17eA22CAE1be5FeB7fCDC0Ef67DCa84D',
+  '0x3e6F107Fd4A95AF86108c1F44E502A6136AD386e',
+  '0x57955d7AA271DbDDE92D67e0EF52D90c6E4089cA'])
+\end{verbatim}
+\item \ethaddr{0xBEb0FAE8c75c79e5f92c1C23C6435bD0509c276e}，GTToken的信任合约列表，使用多签操作；构造参数为
+\begin{verbatim}
+([], 
+ 0x9FDB24Df185b4e6c42846c2f1355cA0A2BB7e043) //多签地址
+\end{verbatim}
+\item \ethaddr{0x353214343Ee192AD8a58C62961B972F4d5a6877E}，GTToken合约，这是一个标准的ERC20合约，用来完成代币的管理、转账等操作；构造参数为
+\begin{verbatim}
+('0x0000000000000000000000000000000000000000', 
+ 0, "GoToken", 6, "GOO", true, 
+ 0x9FDB24Df185b4e6c42846c2f1355cA0A2BB7e043, //多签地址
+ 0xBEb0FAE8c75c79e5f92c1C23C6435bD0509c276e) //信任列表地址
+\end{verbatim}
+\end{enumerate}
+
+GTToken合约的增发及销毁必须通过信任合约列表中的合约进行，目前在信任列表中存在着两个合约，
+\begin{enumerate}
+\item \ethaddr{0xAA9a51f48834924B2F79639Af74FefE9BFF74529} FundAndDistribute合约，用于完成铸币及代币分发操作；构造参数为
+\begin{verbatim}
+(0x353214343Ee192AD8a58C62961B972F4d5a6877E, //GTToken地址
+ "USDT for GOO", "Only for Funders", 
+ 0xdAC17F958D2ee523a2206206994597C13D831ec7,  //USDT地址  
+ 0x9FDB24Df185b4e6c42846c2f1355cA0A2BB7e043,  //多签地址
+ 0x735451974A28f63b0593cCe91696659c1B900380)  //信任列表地址
+\end{verbatim}
+注意，此处的信任地址列表为投资人白名单，虽然内容上与GTToken的信任合约列表一样，但是构造参数并不同，其构造参数为：
+\begin{verbatim}
+(['0xe855B4cb17eA22CAE1be5FeB7fCDC0Ef67DCa84D',
+  '0x3e6F107Fd4A95AF86108c1F44E502A6136AD386e',
+  '0x57955d7AA271DbDDE92D67e0EF52D90c6E4089cA'], //投资人列表
+ 0x9FDB24Df185b4e6c42846c2f1355cA0A2BB7e043) //多签地址
+\end{verbatim}
+
+\item \ethaddr{0x491c8a58DDb5a6380FeA7fE8909788f681453B00} InitLock合约，用于完成初始锁仓功能；构造参数为
+\begin{verbatim}
+(0x353214343Ee192AD8a58C62961B972F4d5a6877E, //GTToken地址
+ 9932664,  //解锁区块高度，大约锁仓6个月
+ ['0xe855B4cb17eA22CAE1be5FeB7fCDC0Ef67DCa84D',
+  '0x3e6F107Fd4A95AF86108c1F44E502A6136AD386e',
+  '0x57955d7AA271DbDDE92D67e0EF52D90c6E4089cA'], //解锁分配地址
+ [30000000000, 10000000000, 10000000000],   //解锁分配数量
+ 0x9FDB24Df185b4e6c42846c2f1355cA0A2BB7e043) //多签地址
+\end{verbatim}
+\end{enumerate}
+
+不难发现，上述所有合约使用的多签合约为同一个合约地址，这仅仅是为了方便初期的管理，并不是为了限制。每个合约都可以实用\texttt{transfer\_multisig}方法修改其对应的多签合约。
+\input{share.tex}
+\newpage
+\begin{appendices}
+%\input{guide.tex}
+%\input{changelog.tex}
+\end{appendices}
+
+\end{document}
