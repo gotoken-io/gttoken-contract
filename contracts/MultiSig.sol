@@ -29,10 +29,10 @@ contract MultiSig{
     _;
   }
   constructor(address[] memory s) public enough_signers(s){
-    signers = s;
     signer_number = s.length;
     owner = msg.sender;
     for(uint i = 0; i < s.length; i++){
+      signers.push(s[i]);
       signer_join_height[s[i]] = block.number;
     }
   }
@@ -40,6 +40,10 @@ contract MultiSig{
   modifier only_signer{
     require(array_exist(signers, msg.sender), "only a signer can call this");
     _;
+  }
+
+  function is_signer(address _addr) public view returns(bool){
+    return array_exist(signers, _addr);
   }
 
   function get_majority_number() private view returns(uint){
@@ -55,7 +59,7 @@ contract MultiSig{
     return false;
   }
 
-  function is_all_minus_sig(uint number, uint64 id, string memory name, bytes32 hash, address sender) internal only_signer returns (bool){
+  function is_all_minus_sig(uint number, uint64 id, string memory name, bytes32 hash, address sender) internal returns (bool){
     bytes32 b = keccak256(abi.encodePacked(name));
     require(id <= used_invoke_ids[b] + 1, "you're using a too big id.");
 
@@ -96,6 +100,14 @@ contract MultiSig{
     return true;
   }
 
+  function update_and_check_reach_majority(uint64 id, string memory name, bytes32 hash, address sender) public returns (bool){
+    //bytes32 hash = keccak256(abi.encodePacked(msg.sig, msg.data));
+    if(!is_all_minus_sig(get_majority_number()-1, id, name, hash, sender))
+      return false;
+    set_called(hash);
+    return true;
+  }
+
   modifier is_majority_sig(uint64 id, string memory name) {
     bytes32 hash = keccak256(abi.encodePacked(msg.sig, msg.data));
     if(!is_all_minus_sig(get_majority_number()-1, id, name, hash, msg.sender))
@@ -111,7 +123,7 @@ contract MultiSig{
     _;
   }
 
-  function set_called(bytes32 hash) internal only_signer{
+  function set_called(bytes32 hash) internal {
     invoke_status storage invoke = invokes[hash];
     require(invoke.exists, "no such function");
     require(!invoke.called, "already called");
@@ -151,3 +163,14 @@ contract MultiSig{
     return signers;
   }
 }
+
+contract MultiSigFactory{
+  event NewMultiSig(address addr, address[] signers);
+
+  function createMultiSig(address[] memory _signers) public returns(address){
+    MultiSig ms = new MultiSig(_signers);
+    emit NewMultiSig(address(ms), _signers);
+    return address(ms);
+  }
+}
+

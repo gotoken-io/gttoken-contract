@@ -26,4 +26,9 @@ library AddressArray{
     delete self[self.length-1];
     self.length--;
   }
+
+  function replace(address[] storage self, address old_addr, address new_addr) public returns(bool){
+    uint index = index_of(self, old_addr);
+    self[index] = new_addr;
+  }
 }

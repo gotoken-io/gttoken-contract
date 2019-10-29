@@ -85,7 +85,7 @@ contract("TESTTOKENCLAIMER", (accounts) => {
 			await usdt.issue(claimer_address, 400000000);
 			let balance = await usdt.balanceOf(claimer_address)
 			assert.equal(balance.toNumber(), 400000000, "the claimer_address's balance should be 300000000");
-			await claimer.claimUSDTStyleTokens(usdt_address, accounts[1]);
+			await claimer.claimStdTokens(usdt_address, accounts[1]);
 			balance = await usdt.balanceOf(accounts[1])
 			assert.equal(balance.toNumber(), 400000000, "the accounts[1]'s balance should be 300000000 after claimStdTokens()");
 		});

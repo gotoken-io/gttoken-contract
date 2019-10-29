@@ -23,6 +23,10 @@
 //
 // const fs = require('fs');
 // const mnemonic = fs.readFileSync(".secret").toString().trim();
+//
+const HDWalletProvider = require("truffle-hdwallet-provider");
+
+require('dotenv').config()
 
 module.exports = {
   /**
@@ -60,14 +64,25 @@ module.exports = {
 
     // Useful for deploying to a public network.
     // NB: It's important to wrap the provider as a function.
-    // ropsten: {
-      // provider: () => new HDWalletProvider(mnemonic, `https://ropsten.infura.io/v3/YOUR-PROJECT-ID`),
-      // network_id: 3,       // Ropsten's id
-      // gas: 5500000,        // Ropsten has a lower block limit than mainnet
-      // confirmations: 2,    // # of confs to wait between deployments. (default: 0)
-      // timeoutBlocks: 200,  // # of blocks before a deployment times out  (minimum/default: 50)
-      // skipDryRun: true     // Skip dry run before migrations? (default: false for public nets )
-    // },
+     ropsten: {
+       //provider: () => new HDWalletProvider(mnemonic, `https://ropsten.infura.io/v3/YOUR-PROJECT-ID`),
+       provider: new HDWalletProvider(process.env.MNENOMIC, "https://ropsten.infura.io/v3/" + process.env.INFURA_API_KEY),
+       network_id: 3,       // Ropsten's id
+       gas: 5500000,        // Ropsten has a lower block limit than mainnet
+       //confirmations: 3,    // # of confs to wait between deployments. (default: 0)
+       timeoutBlocks: 200,  // # of blocks before a deployment times out  (minimum/default: 50)
+       //skipDryRun: true,     // Skip dry run before migrations? (default: false for public nets )
+      gasPrice: 10000000000
+     },
+    main: {
+      provider: new HDWalletProvider(process.env.MNENOMIC, "https://mainnet.infura.io/v3/" + process.env.INFURA_API_KEY),
+      network_id: 1,
+      gas: 7500000,
+       confirmations: 2,    // # of confs to wait between deployments. (default: 0)
+       timeoutBlocks: 200,  // # of blocks before a deployment times out  (minimum/default: 50)
+       //skipDryRun: true,     // Skip dry run before migrations? (default: false for public nets )
+      gasPrice: 12000000000
+    },
 
     // Useful for private networks
     // private: {
@@ -77,10 +92,19 @@ module.exports = {
     // }
     ganache :{
       host:"127.0.0.1",
+      //host:"10.10.10.10",
       port:7545,
       network_id:5777,
-      gas: 85000000,           // Gas sent with each transaction (default: ~6700000)
+      //gas: 85000000,           // Gas sent with each transaction (default: ~6700000)
     },
+  },
+
+  plugins: [
+        'truffle-plugin-verify'
+  ],
+
+  api_keys: {
+      etherscan: process.env.ETHERSCAN_API_KEY
   },
 
   // Set default mocha options here, use special reporters etc.

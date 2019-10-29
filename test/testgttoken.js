@@ -1,5 +1,10 @@
 const GTToken = artifacts.require("GTToken");
 const GTTokenFactory = artifacts.require("GTTokenFactory");
+const MultiSigFactory = artifacts.require("MultiSigFactory");
+const MultiSig = artifacts.require("MultiSig");
+const TrustListFactory = artifacts.require("TrustListFactory");
+const TrustList = artifacts.require("TrustList");
+
 const { BN, constants, expectEvent, expectRevert  } = require('openzeppelin-test-helpers');
 const { expect  } = require('chai');
 const getBlockNumber = require('./blockNumber')(web3)
@@ -8,24 +13,32 @@ contract('GTTokenFactory', (accounts) =>{
   let factory = {}
   let token = {}
   let clone1 = {}
+  let multisig_factory = {}
+  let multisig = {}
+  let trustlist_factory = {}
+  let trustlist = {}
+
+
   context('init', ()=>{
         it('init', async () => {
+          multisig_factory = await MultiSigFactory.deployed();
+          assert.ok(multisig_factory);
+          tokentx = await multisig_factory.createMultiSig(accounts.slice(0, 3));
+          multisig = await MultiSig.at(tokentx.logs[0].args.addr);
+
+          trustlist_factory = await TrustListFactory.deployed();
+          assert.ok(trustlist_factory);
+          tokentx = await trustlist_factory.createTrustList(accounts.slice(3, 4), multisig.address);
+          trustlist = await MultiSig.at(tokentx.logs[0].args.addr);
+
     factory = await GTTokenFactory.deployed();
     assert.ok(factory);
-    tokentx = await factory.createCloneToken('0x0000000000000000000000000000000000000000', 0, "Test", 18, "tst", true, accounts.slice(0, 3));
+    tokentx = await factory.createCloneToken('0x0000000000000000000000000000000000000000', 0, "Test", 18, "tst", true, multisig.address, trustlist.address);
     token = await GTToken.at(tokentx.logs[0].args._cloneToken);
     assert.ok(token);
         })
     //console.log('token is: ', token)
   })
-    context('add trust issuer', () => {
-        it('add trust issuer', async () => {
-          //console.log(token);
-          invoke_id = await token.get_unused_invoke_id("add_trusted_issuer", {from:accounts[0]});
-          await token.add_trusted_issuer(invoke_id, accounts[3], {from:accounts[1]});
-          await token.add_trusted_issuer(invoke_id, accounts[3], {from:accounts[0]});
-    })
-    });
 
   //for token itself, check testerc20.js, here we only test GTToken related features
     context('create, destroy, and claim tokens', ()=> {
@@ -62,13 +75,17 @@ contract('GTTokenFactory', (accounts) =>{
     context('test all cloning', () => {
         it('should be able to clone token', async () => {
             // We create a clone token out of a past block
-            const cloneTokenTx = await token.createCloneToken('MMT2', 18, 'MMT2', 0, true, accounts.slice(0, 3))
+          tokentx = await trustlist_factory.createTrustList(accounts.slice(4, 5), multisig.address);
+
+          new_trustlist = await MultiSig.at(tokentx.logs[0].args.addr);
+
+            const cloneTokenTx = await token.createCloneToken('MMT2', 18, 'MMT2', 0, true, multisig.address, new_trustlist.address)
             const addr = cloneTokenTx.logs[0].args._cloneToken
 
             clone1 = await GTToken.at(addr)
-          invoke_id = await clone1.get_unused_invoke_id("add_trusted_issuer", {from:accounts[0]});
-          await clone1.add_trusted_issuer(invoke_id, accounts[4], {from:accounts[1]});
-          await clone1.add_trusted_issuer(invoke_id, accounts[4], {from:accounts[0]});
+          //invoke_id = await clone1.get_unused_invoke_id("add_trusted_issuer", {from:accounts[0]});
+          //await clone1.add_trusted_issuer(invoke_id, accounts[4], {from:accounts[1]});
+          //await clone1.add_trusted_issuer(invoke_id, accounts[4], {from:accounts[0]});
         })
 
         it('has the same total supply than parent token', async () => {

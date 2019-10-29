@@ -8,7 +8,4 @@ contract TestTokenClaimer is TokenClaimer{
 		_claimStdTokens(_token, to);
 	}
 
-	function claimUSDTStyleTokens(address _token, address payable to) public{
-		_claimUSDTStyleTokens(_token, to);
-	}
 }
