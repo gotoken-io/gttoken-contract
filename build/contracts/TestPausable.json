@@ -1,0 +1,1050 @@
+{
+  "contractName": "TestPausable",
+  "abi": [
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "name": "item",
+          "type": "bytes32"
+        }
+      ],
+      "name": "is_item_paused",
+      "outputs": [
+        {
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "is_not_paused",
+      "outputs": [
+        {
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "name": "item",
+          "type": "bytes32"
+        }
+      ],
+      "name": "is_item_not_paused",
+      "outputs": [
+        {
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "is_paused",
+      "outputs": [
+        {
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "name": "item",
+          "type": "bytes32"
+        }
+      ],
+      "name": "Paused",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "name": "item",
+          "type": "bytes32"
+        }
+      ],
+      "name": "Unpaused",
+      "type": "event"
+    },
+    {
+      "constant": false,
+      "inputs": [],
+      "name": "pause",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "item",
+          "type": "bytes32"
+        }
+      ],
+      "name": "pause_item",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [],
+      "name": "unpause",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "item",
+          "type": "bytes32"
+        }
+      ],
+      "name": "unpause_item",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.5.10+commit.5a6ea5b1\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"constant\":false,\"inputs\":[{\"name\":\"item\",\"type\":\"bytes32\"}],\"name\":\"unpause_item\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"name\":\"item\",\"type\":\"bytes32\"}],\"name\":\"is_item_paused\",\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"is_not_paused\",\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"name\":\"item\",\"type\":\"bytes32\"}],\"name\":\"is_item_not_paused\",\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[],\"name\":\"unpause\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"item\",\"type\":\"bytes32\"}],\"name\":\"pause_item\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[],\"name\":\"pause\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"is_paused\",\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"name\":\"item\",\"type\":\"bytes32\"}],\"name\":\"Paused\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"name\":\"item\",\"type\":\"bytes32\"}],\"name\":\"Unpaused\",\"type\":\"event\"}],\"devdoc\":{\"methods\":{}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"/Users/xuepeng/git/gttoken-contract/contracts/test/TestPausable.sol\":\"TestPausable\"},\"evmVersion\":\"petersburg\",\"libraries\":{},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"/Users/xuepeng/git/gttoken-contract/contracts/Pausable.sol\":{\"keccak256\":\"0x754c40f6ba5702740ee0d079ef36db9f33fb33bf92950a417ae1aa33d2b23d50\",\"urls\":[\"bzzr://cc982df7f82908e77000fae1a3ec7a0c4cd5b3c0484b595ffd11cc4c9211e24c\",\"dweb:/ipfs/QmdQNDZr66726k7wiymd2weWptYwy78DzgiueMB6AxyNj8\"]},\"/Users/xuepeng/git/gttoken-contract/contracts/test/TestPausable.sol\":{\"keccak256\":\"0xc1b3dd582f4da21597eab8906d889d440233c6afaffc1a5e41d2f2f39077fffb\",\"urls\":[\"bzzr://bbad836d50473d39212bf4eb4cde130d000302358c6639a00cdd01fb156a12d4\",\"dweb:/ipfs/QmZeTbjhrhFzsgMDtiqiUAd5k6ZqRCQxpgKNBgFvpr5vcX\"]}},\"version\":1}",
+  "bytecode": "0x6080604052610569806100136000396000f3fe608060405234801561001057600080fd5b50600436106100885760003560e01c80633f4ba83a1161005b5780633f4ba83a1461010257806356b670b91461010a5780638456cb59146101275780639d4f8aa91461012f57610088565b806301955a491461008d5780631abf0631146100ac57806324028575146100dd578063354dc68d146100e5575b600080fd5b6100aa600480360360208110156100a357600080fd5b5035610137565b005b6100c9600480360360208110156100c257600080fd5b5035610143565b604080519115158252519081900360200190f35b6100c9610158565b6100c9600480360360208110156100fb57600080fd5b5035610186565b6100aa61019c565b6100aa6004803603602081101561012057600080fd5b50356101a6565b6100aa6101af565b6100c96101b7565b610140816101e4565b50565b60009081526020819052604090205460ff1690565b60008051602061051583398151915260009081526020526000805160206104f58339815191525460ff161590565b60009081526020819052604090205460ff161590565b6101a4610291565b565b61014081610366565b6101a461041c565b60008051602061051583398151915260009081526020526000805160206104f58339815191525460ff1690565b600081815260208190526040902054819060ff161515600114610244576040805162461bcd60e51b81526020600482015260136024820152721c995c5d5a5c99481a5d195b481c185d5cd959606a1b604482015290519081900360640190fd5b60008281526020818152604091829020805460ff19169055815184815291517fd05bfc2250abb0f8fd265a54c53a24359c5484af63cad2e4ce87c78ab751395a9281900390910190a15050565b60008051602061051583398151915260009081526020526000805160206104f58339815191525460ff161515600114610302576040805162461bcd60e51b815260206004820152600e60248201526d1c995c5d5a5c99481c185d5cd95960921b604482015290519081900360640190fd5b600080516020610515833981519152600081815260209081526000805160206104f5833981519152805460ff1916905560408051928352517fd05bfc2250abb0f8fd265a54c53a24359c5484af63cad2e4ce87c78ab751395a9281900390910190a1565b600081815260208190526040902054819060ff16156103cc576040805162461bcd60e51b815260206004820152601760248201527f72657175697265206974656d206e6f7420706175736564000000000000000000604482015290519081900360640190fd5b60008281526020818152604091829020805460ff19166001179055815184815291517f0cb09dc71d57eeec2046f6854976717e4874a3cf2d6ddeddde337e5b6de6ba319281900390910190a15050565b60008051602061051583398151915260009081526020526000805160206104f58339815191525460ff161561048d576040805162461bcd60e51b81526020600482015260126024820152711c995c5d5a5c99481b9bdd081c185d5cd95960721b604482015290519081900360640190fd5b600080516020610515833981519152600081815260209081526000805160206104f5833981519152805460ff1916600117905560408051928352517f0cb09dc71d57eeec2046f6854976717e4874a3cf2d6ddeddde337e5b6de6ba319281900390910190a156fe5c75009a41da41cdfd5c4cb6364ba77b0d64b13d5b34e14ce058d2eaf29b61c9e55fa852ec66688fa70405e771908c66cc3036301008016aac1cf4f9d2cfd27ea265627a7a723058204fd27e89b4f8a5e9269259c99f9a28d63507e2deefbccd282e08cf19c964c22764736f6c634300050a0032",
+  "deployedBytecode": "0x608060405234801561001057600080fd5b50600436106100885760003560e01c80633f4ba83a1161005b5780633f4ba83a1461010257806356b670b91461010a5780638456cb59146101275780639d4f8aa91461012f57610088565b806301955a491461008d5780631abf0631146100ac57806324028575146100dd578063354dc68d146100e5575b600080fd5b6100aa600480360360208110156100a357600080fd5b5035610137565b005b6100c9600480360360208110156100c257600080fd5b5035610143565b604080519115158252519081900360200190f35b6100c9610158565b6100c9600480360360208110156100fb57600080fd5b5035610186565b6100aa61019c565b6100aa6004803603602081101561012057600080fd5b50356101a6565b6100aa6101af565b6100c96101b7565b610140816101e4565b50565b60009081526020819052604090205460ff1690565b60008051602061051583398151915260009081526020526000805160206104f58339815191525460ff161590565b60009081526020819052604090205460ff161590565b6101a4610291565b565b61014081610366565b6101a461041c565b60008051602061051583398151915260009081526020526000805160206104f58339815191525460ff1690565b600081815260208190526040902054819060ff161515600114610244576040805162461bcd60e51b81526020600482015260136024820152721c995c5d5a5c99481a5d195b481c185d5cd959606a1b604482015290519081900360640190fd5b60008281526020818152604091829020805460ff19169055815184815291517fd05bfc2250abb0f8fd265a54c53a24359c5484af63cad2e4ce87c78ab751395a9281900390910190a15050565b60008051602061051583398151915260009081526020526000805160206104f58339815191525460ff161515600114610302576040805162461bcd60e51b815260206004820152600e60248201526d1c995c5d5a5c99481c185d5cd95960921b604482015290519081900360640190fd5b600080516020610515833981519152600081815260209081526000805160206104f5833981519152805460ff1916905560408051928352517fd05bfc2250abb0f8fd265a54c53a24359c5484af63cad2e4ce87c78ab751395a9281900390910190a1565b600081815260208190526040902054819060ff16156103cc576040805162461bcd60e51b815260206004820152601760248201527f72657175697265206974656d206e6f7420706175736564000000000000000000604482015290519081900360640190fd5b60008281526020818152604091829020805460ff19166001179055815184815291517f0cb09dc71d57eeec2046f6854976717e4874a3cf2d6ddeddde337e5b6de6ba319281900390910190a15050565b60008051602061051583398151915260009081526020526000805160206104f58339815191525460ff161561048d576040805162461bcd60e51b81526020600482015260126024820152711c995c5d5a5c99481b9bdd081c185d5cd95960721b604482015290519081900360640190fd5b600080516020610515833981519152600081815260209081526000805160206104f5833981519152805460ff1916600117905560408051928352517f0cb09dc71d57eeec2046f6854976717e4874a3cf2d6ddeddde337e5b6de6ba319281900390910190a156fe5c75009a41da41cdfd5c4cb6364ba77b0d64b13d5b34e14ce058d2eaf29b61c9e55fa852ec66688fa70405e771908c66cc3036301008016aac1cf4f9d2cfd27ea265627a7a723058204fd27e89b4f8a5e9269259c99f9a28d63507e2deefbccd282e08cf19c964c22764736f6c634300050a0032",
+  "sourceMap": "61:284:13:-;;;;;;;;;",
+  "deployedSourceMap": "61:284:13:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;61:284:13;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;270:73;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;-1:-1;270:73:13;;:::i;:::-;;979:99:8;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;-1:-1;979:99:8;;:::i;:::-;;;;;;;;;;;;;;;;;;1082:91;;;:::i;1177:105::-;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;-1:-1;1177:105:8;;:::i;219:47:13:-;;;:::i;146:69::-;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;-1:-1;146:69:13;;:::i;99:43::-;;;:::i;890:85:8:-;;;:::i;270:73:13:-;319:19;333:4;319:13;:19::i;:::-;270:73;:::o;979:99:8:-;1037:4;1055:18;;;;;;;;;;;;;;979:99::o;1082:91::-;-1:-1:-1;;;;;;;;;;;1128:4:8;1147:21;;;;;-1:-1:-1;;;;;;;;;;;1147:21:8;;;1146:22;1082:91;:::o;1177:105::-;1240:4;1259:18;;;;;;;;;;;;;1258:19;;1177:105::o;219:47:13:-;251:10;:8;:10::i;:::-;219:47::o;146:69::-;193:17;205:4;193:11;:17::i;99:43::-;129:8;:6;:8::i;890:85:8:-;-1:-1:-1;;;;;;;;;;;931:4:8;949:21;;;;;-1:-1:-1;;;;;;;;;;;949:21:8;;;890:85;:::o;1644:131::-;591:12;:18;;;;;;;;;;;1707:4;;591:18;;:25;;:18;:25;583:57;;;;;-1:-1:-1;;;583:57:8;;;;;;;;;;;;-1:-1:-1;;;583:57:8;;;;;;;;;;;;;;;1740:5;1719:18;;;;;;;;;;;;:26;;-1:-1:-1;;1719:26:8;;;1756:14;;;;;;;;;;;;;;;;;1644:131;;:::o;1532:108::-;-1:-1:-1;;;;;;;;;;;476:12:8;:21;;;;;-1:-1:-1;;;;;;;;;;;476:21:8;;;:28;;:21;:28;468:55;;;;;-1:-1:-1;;;468:55:8;;;;;;;;;;;;-1:-1:-1;;;468:55:8;;;;;;;;;;;;;;;-1:-1:-1;;;;;;;;;;;1602:5:8;1578:21;;;;;;;-1:-1:-1;;;;;;;;;;;1578:29:8;;-1:-1:-1;;1578:29:8;;;:21;1618:17;;;;;;;;;;;;;;;;1532:108::o;1398:130::-;820:12;:18;;;;;;;;;;;1463:4;;820:18;;:26;812:62;;;;;-1:-1:-1;;;812:62:8;;;;;;;;;;;;;;;;;;;;;;;;;;;;1475:12;:18;;;;;;;;;;;;:25;;-1:-1:-1;;1475:25:8;1496:4;1475:25;;;1511:12;;;;;;;;;;;;;;;;;1398:130;;:::o;1286:108::-;-1:-1:-1;;;;;;;;;;;696:12:8;:21;;;;;-1:-1:-1;;;;;;;;;;;696:21:8;;;:29;688:60;;;;;-1:-1:-1;;;688:60:8;;;;;;;;;;;;-1:-1:-1;;;688:60:8;;;;;;;;;;;;;;;-1:-1:-1;;;;;;;;;;;1335:12:8;:21;;;;;;;-1:-1:-1;;;;;;;;;;;1335:28:8;;-1:-1:-1;;1335:28:8;1359:4;1335:28;;;:21;1374:15;;;;;;;;;;;;;;;;1286:108::o",
+  "source": "pragma solidity >=0.4.21 <0.6.0;\n\nimport \"../Pausable.sol\";\n\ncontract TestPausable is Pausable{\n\n  function pause() public {\n    _pause();\n  }\n\n  function pause_item(bytes32 item) public {\n    _pause_item(item);\n  }\n\n  function unpause() public {\n    _unpause();\n  }\n\n  function unpause_item(bytes32 item) public {\n    _unpause_item(item);\n  }\n}\n",
+  "sourcePath": "/Users/xuepeng/git/gttoken-contract/contracts/test/TestPausable.sol",
+  "ast": {
+    "absolutePath": "/Users/xuepeng/git/gttoken-contract/contracts/test/TestPausable.sol",
+    "exportedSymbols": {
+      "TestPausable": [
+        4171
+      ]
+    },
+    "id": 4172,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 4133,
+        "literals": [
+          "solidity",
+          ">=",
+          "0.4",
+          ".21",
+          "<",
+          "0.6",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:32:13"
+      },
+      {
+        "absolutePath": "/Users/xuepeng/git/gttoken-contract/contracts/Pausable.sol",
+        "file": "../Pausable.sol",
+        "id": 4134,
+        "nodeType": "ImportDirective",
+        "scope": 4172,
+        "sourceUnit": 3553,
+        "src": "34:25:13",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "baseContracts": [
+          {
+            "arguments": null,
+            "baseName": {
+              "contractScope": null,
+              "id": 4135,
+              "name": "Pausable",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 3552,
+              "src": "86:8:13",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_Pausable_$3552",
+                "typeString": "contract Pausable"
+              }
+            },
+            "id": 4136,
+            "nodeType": "InheritanceSpecifier",
+            "src": "86:8:13"
+          }
+        ],
+        "contractDependencies": [
+          3552
+        ],
+        "contractKind": "contract",
+        "documentation": null,
+        "fullyImplemented": true,
+        "id": 4171,
+        "linearizedBaseContracts": [
+          4171,
+          3552
+        ],
+        "name": "TestPausable",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "body": {
+              "id": 4142,
+              "nodeType": "Block",
+              "src": "123:19:13",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "arguments": [],
+                    "expression": {
+                      "argumentTypes": [],
+                      "id": 4139,
+                      "name": "_pause",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 3497,
+                      "src": "129:6:13",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_internal_nonpayable$__$returns$__$",
+                        "typeString": "function ()"
+                      }
+                    },
+                    "id": 4140,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "129:8:13",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 4141,
+                  "nodeType": "ExpressionStatement",
+                  "src": "129:8:13"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 4143,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "pause",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 4137,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "113:2:13"
+            },
+            "returnParameters": {
+              "id": 4138,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "123:0:13"
+            },
+            "scope": 4171,
+            "src": "99:43:13",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 4152,
+              "nodeType": "Block",
+              "src": "187:28:13",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "id": 4149,
+                        "name": "item",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 4145,
+                        "src": "205:4:13",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bytes32",
+                          "typeString": "bytes32"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_bytes32",
+                          "typeString": "bytes32"
+                        }
+                      ],
+                      "id": 4148,
+                      "name": "_pause_item",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 3516,
+                      "src": "193:11:13",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_internal_nonpayable$_t_bytes32_$returns$__$",
+                        "typeString": "function (bytes32)"
+                      }
+                    },
+                    "id": 4150,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "193:17:13",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 4151,
+                  "nodeType": "ExpressionStatement",
+                  "src": "193:17:13"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 4153,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "pause_item",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 4146,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 4145,
+                  "name": "item",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 4153,
+                  "src": "166:12:13",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes32",
+                    "typeString": "bytes32"
+                  },
+                  "typeName": {
+                    "id": 4144,
+                    "name": "bytes32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "166:7:13",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes32",
+                      "typeString": "bytes32"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "165:14:13"
+            },
+            "returnParameters": {
+              "id": 4147,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "187:0:13"
+            },
+            "scope": 4171,
+            "src": "146:69:13",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 4159,
+              "nodeType": "Block",
+              "src": "245:21:13",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "arguments": [],
+                    "expression": {
+                      "argumentTypes": [],
+                      "id": 4156,
+                      "name": "_unpause",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 3532,
+                      "src": "251:8:13",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_internal_nonpayable$__$returns$__$",
+                        "typeString": "function ()"
+                      }
+                    },
+                    "id": 4157,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "251:10:13",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 4158,
+                  "nodeType": "ExpressionStatement",
+                  "src": "251:10:13"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 4160,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "unpause",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 4154,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "235:2:13"
+            },
+            "returnParameters": {
+              "id": 4155,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "245:0:13"
+            },
+            "scope": 4171,
+            "src": "219:47:13",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 4169,
+              "nodeType": "Block",
+              "src": "313:30:13",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "id": 4166,
+                        "name": "item",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 4162,
+                        "src": "333:4:13",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bytes32",
+                          "typeString": "bytes32"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_bytes32",
+                          "typeString": "bytes32"
+                        }
+                      ],
+                      "id": 4165,
+                      "name": "_unpause_item",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 3551,
+                      "src": "319:13:13",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_internal_nonpayable$_t_bytes32_$returns$__$",
+                        "typeString": "function (bytes32)"
+                      }
+                    },
+                    "id": 4167,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "319:19:13",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 4168,
+                  "nodeType": "ExpressionStatement",
+                  "src": "319:19:13"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 4170,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "unpause_item",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 4163,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 4162,
+                  "name": "item",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 4170,
+                  "src": "292:12:13",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes32",
+                    "typeString": "bytes32"
+                  },
+                  "typeName": {
+                    "id": 4161,
+                    "name": "bytes32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "292:7:13",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes32",
+                      "typeString": "bytes32"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "291:14:13"
+            },
+            "returnParameters": {
+              "id": 4164,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "313:0:13"
+            },
+            "scope": 4171,
+            "src": "270:73:13",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          }
+        ],
+        "scope": 4172,
+        "src": "61:284:13"
+      }
+    ],
+    "src": "0:346:13"
+  },
+  "legacyAST": {
+    "absolutePath": "/Users/xuepeng/git/gttoken-contract/contracts/test/TestPausable.sol",
+    "exportedSymbols": {
+      "TestPausable": [
+        4171
+      ]
+    },
+    "id": 4172,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 4133,
+        "literals": [
+          "solidity",
+          ">=",
+          "0.4",
+          ".21",
+          "<",
+          "0.6",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:32:13"
+      },
+      {
+        "absolutePath": "/Users/xuepeng/git/gttoken-contract/contracts/Pausable.sol",
+        "file": "../Pausable.sol",
+        "id": 4134,
+        "nodeType": "ImportDirective",
+        "scope": 4172,
+        "sourceUnit": 3553,
+        "src": "34:25:13",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "baseContracts": [
+          {
+            "arguments": null,
+            "baseName": {
+              "contractScope": null,
+              "id": 4135,
+              "name": "Pausable",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 3552,
+              "src": "86:8:13",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_Pausable_$3552",
+                "typeString": "contract Pausable"
+              }
+            },
+            "id": 4136,
+            "nodeType": "InheritanceSpecifier",
+            "src": "86:8:13"
+          }
+        ],
+        "contractDependencies": [
+          3552
+        ],
+        "contractKind": "contract",
+        "documentation": null,
+        "fullyImplemented": true,
+        "id": 4171,
+        "linearizedBaseContracts": [
+          4171,
+          3552
+        ],
+        "name": "TestPausable",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "body": {
+              "id": 4142,
+              "nodeType": "Block",
+              "src": "123:19:13",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "arguments": [],
+                    "expression": {
+                      "argumentTypes": [],
+                      "id": 4139,
+                      "name": "_pause",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 3497,
+                      "src": "129:6:13",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_internal_nonpayable$__$returns$__$",
+                        "typeString": "function ()"
+                      }
+                    },
+                    "id": 4140,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "129:8:13",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 4141,
+                  "nodeType": "ExpressionStatement",
+                  "src": "129:8:13"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 4143,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "pause",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 4137,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "113:2:13"
+            },
+            "returnParameters": {
+              "id": 4138,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "123:0:13"
+            },
+            "scope": 4171,
+            "src": "99:43:13",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 4152,
+              "nodeType": "Block",
+              "src": "187:28:13",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "id": 4149,
+                        "name": "item",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 4145,
+                        "src": "205:4:13",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bytes32",
+                          "typeString": "bytes32"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_bytes32",
+                          "typeString": "bytes32"
+                        }
+                      ],
+                      "id": 4148,
+                      "name": "_pause_item",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 3516,
+                      "src": "193:11:13",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_internal_nonpayable$_t_bytes32_$returns$__$",
+                        "typeString": "function (bytes32)"
+                      }
+                    },
+                    "id": 4150,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "193:17:13",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 4151,
+                  "nodeType": "ExpressionStatement",
+                  "src": "193:17:13"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 4153,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "pause_item",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 4146,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 4145,
+                  "name": "item",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 4153,
+                  "src": "166:12:13",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes32",
+                    "typeString": "bytes32"
+                  },
+                  "typeName": {
+                    "id": 4144,
+                    "name": "bytes32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "166:7:13",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes32",
+                      "typeString": "bytes32"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "165:14:13"
+            },
+            "returnParameters": {
+              "id": 4147,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "187:0:13"
+            },
+            "scope": 4171,
+            "src": "146:69:13",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 4159,
+              "nodeType": "Block",
+              "src": "245:21:13",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "arguments": [],
+                    "expression": {
+                      "argumentTypes": [],
+                      "id": 4156,
+                      "name": "_unpause",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 3532,
+                      "src": "251:8:13",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_internal_nonpayable$__$returns$__$",
+                        "typeString": "function ()"
+                      }
+                    },
+                    "id": 4157,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "251:10:13",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 4158,
+                  "nodeType": "ExpressionStatement",
+                  "src": "251:10:13"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 4160,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "unpause",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 4154,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "235:2:13"
+            },
+            "returnParameters": {
+              "id": 4155,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "245:0:13"
+            },
+            "scope": 4171,
+            "src": "219:47:13",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 4169,
+              "nodeType": "Block",
+              "src": "313:30:13",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "id": 4166,
+                        "name": "item",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 4162,
+                        "src": "333:4:13",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bytes32",
+                          "typeString": "bytes32"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_bytes32",
+                          "typeString": "bytes32"
+                        }
+                      ],
+                      "id": 4165,
+                      "name": "_unpause_item",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 3551,
+                      "src": "319:13:13",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_internal_nonpayable$_t_bytes32_$returns$__$",
+                        "typeString": "function (bytes32)"
+                      }
+                    },
+                    "id": 4167,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "319:19:13",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 4168,
+                  "nodeType": "ExpressionStatement",
+                  "src": "319:19:13"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 4170,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "unpause_item",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 4163,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 4162,
+                  "name": "item",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 4170,
+                  "src": "292:12:13",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes32",
+                    "typeString": "bytes32"
+                  },
+                  "typeName": {
+                    "id": 4161,
+                    "name": "bytes32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "292:7:13",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes32",
+                      "typeString": "bytes32"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "291:14:13"
+            },
+            "returnParameters": {
+              "id": 4164,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "313:0:13"
+            },
+            "scope": 4171,
+            "src": "270:73:13",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          }
+        ],
+        "scope": 4172,
+        "src": "61:284:13"
+      }
+    ],
+    "src": "0:346:13"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.5.10+commit.5a6ea5b1.Emscripten.clang"
+  },
+  "networks": {
+    "5777": {
+      "events": {},
+      "links": {},
+      "address": "0xA85BCbdF880491897121742CE6603eB3900AAEA1",
+      "transactionHash": "0xc9d2f147dca2ac409ef66f7e1e635244bedd8d8f7cc26cde25f5bd70c20eace1"
+    }
+  },
+  "schemaVersion": "3.0.11",
+  "updatedAt": "2019-11-03T08:10:40.997Z",
+  "devdoc": {
+    "methods": {}
+  },
+  "userdoc": {
+    "methods": {}
+  }
+}
