@@ -35,6 +35,10 @@ async function performMigration(deployer, network, accounts) {
     funders = ['0xe855B4cb17eA22CAE1be5FeB7fCDC0Ef67DCa84D', '0x3e6F107Fd4A95AF86108c1F44E502A6136AD386e', '0x57955d7AA271DbDDE92D67e0EF52D90c6E4089cA'];
     usdt_address = '0xdAC17F958D2ee523a2206206994597C13D831ec7';
     block_until = (await getBlockNumber()) + 6*185000;
+  }else if(network.includes("ganache")){
+    funders = accounts.slice(0, 3);
+    await USDT.deployed();
+    usdt_address = USDT.address;
   }
   results['usdt'] = usdt_address;
 
