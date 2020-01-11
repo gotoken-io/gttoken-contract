@@ -1,6 +1,6 @@
 工厂方法
-
 ======
+
 本代码库中几乎所有的合约都包含了一个工厂方法，以[MultiSig.sol](../contracts/MultiSig.sol)为例，合约的结构如下：
 ```
 contract MultiSig{
