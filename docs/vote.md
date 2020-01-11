@@ -1,5 +1,6 @@
 投票
 =====
+
 投票是指对一个提案进行表决的过程，投票的模型有很多，计票方法也有很多，未来代码库中会包含更多的投票模型。
 
 目前的投票合约为[SimpleMultiSigVote.sol](../contracts/cooperation/SimpleMultiSigVote.sol)，这是一种使用多签（有权重或无权重）进行投票的方法。
