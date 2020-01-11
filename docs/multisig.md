@@ -90,7 +90,9 @@ contract MyContract is MultiSigTools{
 ```
 其中MyContract中的构造函数中包含了多签合约的地址，`myMethod`则是一个多签方法，当用同样的参数调用该方法的人数超过半数时，则该方法被执行，否则不会被执行。
 
-##有权重的多签合约
+上述封装还包含了另一个方法，`transfer_multisig`，用于更换多签合约。注意，如果更换的合约不是一个有效的多签合约，则所有多签方法都会失效，所以，格外小心！
+
+## 有权重的多签合约
 类似无权重的多签合约，不同是每个多签人都有对应的权重，当表决的权重超过半数的权重时，则多签生效，具体参见[WeightMultiSig.sol](../contracts/cooperation/WeightMultiSig.sol)。
 
 ## 总结
