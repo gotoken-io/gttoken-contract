@@ -1,6 +1,6 @@
 pragma solidity >=0.4.21 <0.6.0;
 
-contract MultiSig{
+contract OldMultiSig{
 
   struct invoke_status{
     uint propose_height;
@@ -84,14 +84,14 @@ contract MultiSig{
     require(!array_exist(invoke.invoke_signers, sender), "you already called this method");
 
     uint valid_invoke_num = 0;
-    uint join_height = signer_join_height[sender];
+    uint join_height = signer_join_height[msg.sender];
     for(uint i = 0; i < invoke.invoke_signers.length; i++){
       require(join_height < invoke.propose_height, "this proposal is already exist before you become a signer");
       if(array_exist(signers, invoke.invoke_signers[i])){
         valid_invoke_num ++;
       }
     }
-    invoke.invoke_signers.push(sender);
+    invoke.invoke_signers.push(msg.sender);
     valid_invoke_num ++;
     emit valid_function_sign(name, id, uint64(valid_invoke_num), invoke.propose_height);
     if(invoke.called) return false;
@@ -102,8 +102,7 @@ contract MultiSig{
 
   function update_and_check_reach_majority(uint64 id, string memory name, bytes32 hash, address sender) public returns (bool){
     //bytes32 hash = keccak256(abi.encodePacked(msg.sig, msg.data));
-    uint minority = signer_number - get_majority_number();
-    if(!is_all_minus_sig(minority, id, name, hash, sender))
+    if(!is_all_minus_sig(get_majority_number()-1, id, name, hash, sender))
       return false;
     set_called(hash);
     return true;
@@ -111,8 +110,7 @@ contract MultiSig{
 
   modifier is_majority_sig(uint64 id, string memory name) {
     bytes32 hash = keccak256(abi.encodePacked(msg.sig, msg.data));
-    uint minority = signer_number - get_majority_number();
-    if(!is_all_minus_sig(minority, id, name, hash, msg.sender))
+    if(!is_all_minus_sig(get_majority_number()-1, id, name, hash, msg.sender))
       return ;
     set_called(hash);
     _;
@@ -166,11 +164,11 @@ contract MultiSig{
   }
 }
 
-contract MultiSigFactory{
+contract OldMultiSigFactory{
   event NewMultiSig(address addr, address[] signers);
 
   function createMultiSig(address[] memory _signers) public returns(address){
-    MultiSig ms = new MultiSig(_signers);
+    OldMultiSig ms = new OldMultiSig(_signers);
     emit NewMultiSig(address(ms), _signers);
     return address(ms);
   }

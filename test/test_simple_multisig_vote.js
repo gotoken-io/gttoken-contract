@@ -35,7 +35,7 @@ contract('SimpleMultiSigVote', (accounts) =>{
       assert.ok(instance);
     })
 
-    it("create/chage vote", async() =>{
+    it("create/change vote", async() =>{
       hash = web3.utils.keccak256("test1");
       block_until = (await getBlockNumber()) + 100;
       await expectRevert(instance.createVote(hash, 0, block_until-100),
@@ -46,15 +46,16 @@ contract('SimpleMultiSigVote', (accounts) =>{
       await instance.createVote(hash, 0, block_until, {from:accounts[8]});
       await expectRevert(instance.createVote(hash, 0, block_until), "already exist");
 
-      const {determined:d1, vote_id:v1, start_height:s1,
+      const {determined:d1, start_height:s1,
         end_height:e1, owner:owner1, announcement:ann1, value: value1} = await instance.voteInfo(hash);
-      expect(d1 == false);
-      expect(v1 == 1);
-      expect(s1 != 0);
-      expect(e1 == block_until);
-      expect(owner1 == accounts[8]);
-      expect(value1 == "");
-      expect(ann1== "");
+      const l = await instance.voteInfo(hash);
+      console.log("l: ", l);
+      expect(d1).to.equal(false);
+      expect(s1.toNumber()).to.not.equal(0);
+      expect(e1.toNumber()).to.equal(block_until);
+      expect(owner1).to.equal(accounts[8]);
+      expect(value1).to.equal("");
+      expect(ann1).to.equal("");
 
 
       await expectRevert(instance.changeVoteInfo(hash, 0, block_until + 100, "xtest", {from:accounts[6]}), "only creator can change vote info")
@@ -76,24 +77,24 @@ contract('SimpleMultiSigVote', (accounts) =>{
 
       const {determined:d1, start_height:s1,
         end_height:e1, owner:owner1, announcement:ann1, value: value1} = await instance.voteInfo(hash);
-      expect(d1 == false);
-      expect(s1 != 0);
-      expect(e1 == block_until);
-      expect(owner1 == accounts[8]);
-      expect(value1 == "");
-      expect(ann1== "");
+      expect(d1).to.equal(false);
+      expect(s1.toNumber()).to.not.equal(0);
+      expect(e1.toNumber()).to.equal(block_until + 100);
+      expect(owner1).to.equal(accounts[8]);
+      expect(value1).to.equal("");
+      expect(ann1).to.equal("");
 
 
       await instance.changeVoteInfo(hash, 0, block_until + 101, "xtest", {from:accounts[8]});
       const {determined:d2, start_height:s2,
         end_height:e2, owner:owner2, announcement:ann2, value:value2}= await instance.voteInfo(hash);
 
-      expect(d2 == false);
-      expect(s1 == s2);
-      expect(e2 == block_until + 100);
-      expect(owner2 == accounts[8]);
-      expect(value2 == "");
-      expect(ann2== "xtest");
+      expect(d2).to.equal(false);
+      expect(s1.toNumber()).to.equal(s2.toNumber());
+      expect(e2.toNumber()).to.equal(block_until + 101);
+      expect(owner2).to.equal(accounts[8]);
+      expect(value2).to.equal("");
+      expect(ann2).to.equal("xtest");
     })
 
     it("vote status", async() =>{
@@ -127,7 +128,7 @@ contract('SimpleMultiSigVote', (accounts) =>{
     it("vote status after vote ", async() =>{
       hash = web3.utils.keccak256("test");
       e = await instance.isVoteDetermined(hash);
-      expect(!e);
+      expect(e).to.equal(false);
       await expectRevert(instance.checkVoteValue(hash), "not determined");
       hash = web3.utils.keccak256("test2");
       await expectRevert(instance.checkVoteValue(hash), "not exist");
@@ -143,9 +144,9 @@ contract('SimpleMultiSigVote', (accounts) =>{
       await instance.vote(invoke_id, hash, "yes", {from:accounts[4]});
 
       e = await instance.isVoteDetermined(hash);
-      expect(e);
+      expect(e).to.equal(true);
       v = await instance.checkVoteValue(hash);
-      expect(v == "yes");
+      expect(v).to.equal("yes");
     })
 
     it("vote revert", async() =>{
@@ -181,15 +182,14 @@ contract('SimpleMultiSigVote', (accounts) =>{
       await instance.createVote(hash, 0, block_until, {from:accounts[8]});
       await expectRevert(instance.createVote(hash, 0, block_until), "already exist");
 
-      const {determined:d1, vote_id:v1, start_height:s1,
+      const {determined:d1, start_height:s1,
         end_height:e1, owner:owner1, announcement:ann1, value: value1} = await instance.voteInfo(hash);
-      expect(d1 == false);
-      expect(v1 == 1);
-      expect(s1 != 0);
-      expect(e1 == block_until);
-      expect(owner1 == accounts[8]);
-      expect(value1 == "");
-      expect(ann1== "");
+      expect(d1).to.equal(false);
+      expect(s1.toNumber()).to.not.equal(0);
+      expect(e1.toNumber()).to.equal(block_until);
+      expect(owner1).to.equal(accounts[8]);
+      expect(value1).to.equal("");
+      expect(ann1).to.equal("");
 
 
       await expectRevert(instance.changeVoteInfo(hash, 0, block_until + 100, "xtest", {from:accounts[6]}), "only creator can change vote info")
@@ -197,7 +197,7 @@ contract('SimpleMultiSigVote', (accounts) =>{
     })
 
     let start_height = 0;
-    it("create/chage vote", async() =>{
+    it("create/change vote", async() =>{
       hash = web3.utils.keccak256("test");
       block_until = (await getBlockNumber()) + 100;
       await expectRevert(instance.createVote(hash, 0, block_until-100),
@@ -211,24 +211,24 @@ contract('SimpleMultiSigVote', (accounts) =>{
 
       const {determined:d1, start_height:s1,
         end_height:e1, owner:owner1, announcement:ann1, value: value1} = await instance.voteInfo(hash);
-      expect(d1 == false);
-      expect(s1 != 0);
-      expect(e1 == block_until);
-      expect(owner1 == accounts[8]);
-      expect(value1 == "");
-      expect(ann1== "");
+      expect(d1).to.equal(false);
+      expect(s1.toNumber()).to.not.equal(0);
+      expect(e1.toNumber()).to.equal(block_until + 100);
+      expect(owner1).to.equal(accounts[8]);
+      expect(value1).to.equal("");
+      expect(ann1).to.equal("");
 
 
       await instance.changeVoteInfo(hash, 0, block_until + 101, "xtest", {from:accounts[8]});
       const {determined:d2, start_height:s2,
         end_height:e2, owner:owner2, announcement:ann2, value:value2}= await instance.voteInfo(hash);
 
-      expect(d2 == false);
-      expect(s1 == s2);
-      expect(e2 == block_until + 100);
-      expect(owner2 == accounts[8]);
-      expect(value2 == "");
-      expect(ann2== "xtest");
+      expect(d2).to.equal(false);
+      expect(s1.toNumber()).to.equal(s2.toNumber());
+      expect(e2.toNumber()).to.equal(block_until + 101);
+      expect(owner2).to.equal(accounts[8]);
+      expect(value2).to.equal("");
+      expect(ann2).to.equal("xtest");
     })
 
     it("vote status", async() =>{
@@ -276,9 +276,9 @@ contract('SimpleMultiSigVote', (accounts) =>{
       await instance.vote(invoke_id, hash, "yes", {from:accounts[2]});
 
       e = await instance.isVoteDetermined(hash);
-      expect(e);
+      expect(e).to.equal(true);
       v = await instance.checkVoteValue(hash);
-      expect(v == "yes");
+      expect(v).to.equal("yes");
     })
 
     it("vote revert", async() =>{
