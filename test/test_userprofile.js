@@ -45,12 +45,12 @@ contract('UserProfileFactory', (accounts) =>{
     await expectRevert(instance.addUser("1", "1", "1", "1", {from:accounts[8]}), "already exist");
 
     e = await instance.userExists(accounts[8]);
-    expect(e);
+    expect(e).to.equal(true);
     const{name, email, avatar, intro} = await instance.userInfo(accounts[8]);
-    expect(name == "gttoken");
-    expect(email == "test@gt.io");
-    expect(avatar == "avatar");
-    expect(intro == "intro");
+    expect(name).to.equal("gttoken");
+    expect(email).to.equal("test@gt.io");
+    expect(avatar).to.equal("avatar");
+    expect(intro).to.equal("intro");
 
     const {logs:log2} = await instance.changeName("gttoken1", {from:accounts[8]});
     expectEvent.inLogs(log2, "ChangeItem", {_addr:accounts[8], _item:"name", _old:"gttoken", _new:"gttoken1"});
@@ -62,16 +62,16 @@ contract('UserProfileFactory', (accounts) =>{
     expectEvent.inLogs(log5, "ChangeItem", {_addr:accounts[8], _item:"intro", _old:"intro", _new:"intro1"});
 
     const {name:n1, email:e1, avatar:a1, intro:i1} = await instance.userInfo(accounts[8]);
-    expect(n1 == "gttoken1");
-    expect(e1 == "test@gt.io1");
-    expect(a1 == "avatar1");
-    expect(i1 == "intro1");
+    expect(n1).to.equal("gttoken1");
+    expect(e1).to.equal("test@gt.io1");
+    expect(a1).to.equal("avatar1");
+    expect(i1).to.equal("intro1");
 
     const {logs:log6} = await instance.removeUser({from:accounts[8]});
     expectEvent.inLogs(log6, "RemoveUser", {_addr:accounts[8]});
 
     e = await instance.userExists(accounts[8]);
-    expect(!e);
+    expect(e).to.equal(false);
   })
 
     it('pause / unpause', async() =>{

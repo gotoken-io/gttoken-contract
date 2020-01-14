@@ -103,6 +103,15 @@ contract GTProject is MultiSigTools, TokenClaimer{
       require(extra_contracts[hash] != address(0x0), "not exist");
       address addr = extra_contracts[hash];
       delete extra_contracts[hash];
+
+      for(uint i = 0; i < extra_contract_names.length; i++){
+        if(keccak256(abi.encodePacked(extra_contract_names[i])) == hash ){
+          extra_contract_names[i] = extra_contract_names[extra_contract_names.length - 1];
+          delete extra_contract_names[extra_contract_names.length - 1];
+          extra_contract_names.length -- ;
+          break;
+        }
+      }
       emit RemoveExtraContract(_name, addr);
   }
 

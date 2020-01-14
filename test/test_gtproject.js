@@ -56,10 +56,10 @@ contract('GTProjectFactory', (accounts) =>{
       intro = await instance.project_intro();
       logo = await instance.project_logo();
       reserve = await instance.project_reserve();
-      expect(name == "name1");
-      expect(intro == "intro1");
-      expect(logo == "logo1");
-      expect(reserve == "reserve1");
+      expect(name).to.equal("name1");
+      expect(intro).to.equal("intro1");
+      expect(logo).to.equal("logo1");
+      expect(reserve).to.equal("reserve1");
 
     })
 
@@ -70,10 +70,10 @@ contract('GTProjectFactory', (accounts) =>{
       await instance.addExtraContract(invoke_id, "test", multisig.address, {from:accounts[2]});
 
       num = (await instance.getExtraContractNumber()).toNumber();
-      expect(num == 1);
+      expect(num).to.equal(1);
       const {name, addr} = await instance.getExtraContractInfo(0);
-      expect(name == "test");
-      expect(addr == multisig.address);
+      expect(name).to.equal("test");
+      expect(addr).to.equal(multisig.address);
 
       invoke_id = await multisig.get_unused_invoke_id("addExtraContract", {from:accounts[0]});
       await instance.addExtraContract(invoke_id, "test", multisig.address, {from:accounts[0]});
@@ -87,12 +87,8 @@ contract('GTProjectFactory', (accounts) =>{
       await instance.removeExtraContract(invoke_id, "test", {from:accounts[2]});
 
       num = (await instance.getExtraContractNumber()).toNumber();
-      expect(num == 0);
-
-
+      expect(num).to.equal(0);
     })
-
-
 
   })
 });
