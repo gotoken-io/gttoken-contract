@@ -12,6 +12,8 @@ transfer_multisig(uint64 id, address _contract)
 ```
 方法在不同的多签合约之间进行切换，切换之后的方法均是一致的，都被MultiSigTools进一步包装为可以继承的基类。
 
+合约地址：0xf949a495dc135590Ac0C5bF092Afd76bD754e041
+
 ### 委托
 
 与其他的多签合约方法所不同的是，在LiquidMultiSig中存在名为liquid_delegate的合约，通过该合约，可以进一步调用
@@ -20,6 +22,8 @@ function delegate(address _to);
 function undelegate()
 ```
 通过这两个方法，投票人可以将自己的票权委托给其他投票人，或者取消委托关系。
+
+合约地址：0xE742e9b1b8184B28021834e5837deF906E920067
 
 ### 更多细节
 流民主的思路看上去简单，但有一些细节值得讨论。
